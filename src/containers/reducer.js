@@ -40,6 +40,35 @@ const reducer = (state = initialState, action) => {
         ...state,
         selectedItem: action.value,
       };
+    case 'LOGIN':
+      return {
+        ...state,
+        usrEmail: action.usrEmail,
+        usrType: action.usrType,
+        token: action.token,
+        isLoading: false,
+        usr_email: '',
+        usr_password: '',
+        selectedItem: '',
+        isValidEmail: false,
+        isValidPassword: false,
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
+        usrEmail: null,
+        usrType: null,
+        token: null,
+        isLoading: false,
+
+        // token: null,
+      };
+    case 'RETRIEVE_TOKEN':
+      return {
+        ...state,
+        token: action.token,
+        isLoading: false,
+      };
     default:
       return state;
   }

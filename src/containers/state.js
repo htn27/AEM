@@ -6,6 +6,11 @@ const initialState = {
   isValidPassword: false,
   selectedItem: '',
   mac_address: '',
+  isLoading: true,
+  usrEmail: '',
+  usrType: '',
+  token: null,
+
   itemType: [
     {
       id: 1,
