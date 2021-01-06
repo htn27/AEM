@@ -19,17 +19,18 @@ export default function DrawerContent(props) {
   const {signOut} = useContext(AuthContext);
   const dispatch = useDispatch();
   const {id_user} = useSelector((state) => state.Student);
-
+  // console.log(role);
   useEffect(() => {
     return async () => {
-      let isUser;
+      let id;
       try {
-        isUser = await AsyncStorage.getItem('idUser');
+        id = await AsyncStorage.getItem('idUser');
+        // let role = await AsyncStorage.getItem('idRole');
       } catch (error) {
         console.log(error);
       }
 
-      dispatch(getUsr(isUser));
+      dispatch(getUsr(id));
     };
   });
 

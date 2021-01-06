@@ -1,4 +1,4 @@
-export const getUsr = (isUser) => ({
+export const getUsr = (idUser) => ({
   type: 'GET_USER',
-  idUser: isUser,
+  id_user: idUser,
 });

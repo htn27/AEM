@@ -7,7 +7,7 @@ export const initialState = {
   selectedItem: '',
   mac_address: '',
   isLoading: true,
-  usrType: '',
+  id_role: null,
   token: null,
 
   itemType: [

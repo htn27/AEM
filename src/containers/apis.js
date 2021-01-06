@@ -18,6 +18,7 @@ export const getUser = async (type, email, pwd) => {
           name_user: json.name_user,
           email: json.email,
           image_student: json.image_student,
+          mobile_mac: json.mobile_mac,
           creator: json.creator,
         };
       } else {

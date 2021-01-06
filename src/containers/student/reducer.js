@@ -4,7 +4,7 @@ const reducer = (state = initialState, action) => {
     case 'GET_USER':
       return {
         ...state,
-        id_user: action.idUser,
+        id_user: action.id_user,
       };
     default:
       return state;

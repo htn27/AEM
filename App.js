@@ -14,12 +14,20 @@ const Drawer = createDrawerNavigator();
 
 const App = () => {
   const dispatch = useDispatch();
-  const {token, isLoading} = useSelector((state) => state.Login);
+  const {id_role, token, isLoading} = useSelector((state) => state.Login);
 
   const authContext = useMemo(
     () => ({
       signIn: async (findUser) => {
-        const {id_user, id_role, token} = findUser;
+        const {id_user, id_role, token, name_user, email} = findUser;
+        console.log(
+          'id: ' + id_user,
+          'idrole: ' + id_role,
+          'token: ' + token,
+          'name: ' + name_user,
+          'email: ' + email,
+        );
+
         try {
           await AsyncStorage.setItem('Token', token);
           await AsyncStorage.setItem('idUser', id_user);
@@ -49,7 +57,7 @@ const App = () => {
       let type;
       try {
         token = await AsyncStorage.getItem('Token');
-        token = await AsyncStorage.getItem('idRole');
+        type = await AsyncStorage.getItem('idRole');
       } catch (e) {
         console.log(e);
       }

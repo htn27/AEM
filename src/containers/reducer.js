@@ -43,14 +43,14 @@ const reducer = (state = initialState, action) => {
     case 'LOGIN':
       return {
         ...state,
-        usrType: action.usrType,
+        id_role: action.idRole,
         token: action.token,
         isLoading: false,
       };
     case 'LOGOUT':
       return {
         ...state,
-        usrType: null,
+        id_role: null,
         token: null,
         isLoading: false,
 
@@ -59,7 +59,7 @@ const reducer = (state = initialState, action) => {
     case 'RETRIEVE_TOKEN':
       return {
         ...state,
-        usrType: action.usrType,
+        id_role: action.idRole,
         token: action.token,
         isLoading: false,
       };

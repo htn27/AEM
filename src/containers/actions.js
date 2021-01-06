@@ -20,9 +20,9 @@ export const handleChangeSelect = (value) => ({
   value: value,
 });
 
-export const login = (usrType, token) => ({
+export const login = (idRole, token) => ({
   type: 'LOGIN',
-  usrType: usrType,
+  idRole: idRole,
   token: token,
 });
 
@@ -30,9 +30,9 @@ export const logout = () => ({
   type: 'LOGOUT',
 });
 
-export const retrieve_token = (usrType, token) => ({
+export const retrieve_token = (idRole, token) => ({
   type: 'RETRIEVE_TOKEN',
-  usrType: usrType,
+  idRole: idRole,
   token: token,
 });
 
@@ -42,17 +42,17 @@ export const check_login = async (email, password, selected) => {
   let type;
 
   if (selected == 'sinhvien') {
-    type = 1;
+    type = '1';
     user = await getUser(type, email, password);
     // console.log(user);
   }
   if (selected == 'giangvien') {
-    type = 2;
-    user = getUser(type, email, password);
+    type = '2';
+    user = await getUser(type, email, password);
   }
   if (selected == 'nhanvien') {
-    type = 3;
-    user = getUser(type, email, password);
+    type = '3';
+    user = await getUser(type, email, password);
   }
   if (user != null) {
     // console.log(user);
@@ -62,7 +62,7 @@ export const check_login = async (email, password, selected) => {
       email: user.email,
       id_role: type,
       image_student: user.image_student,
-      creator: user.creator,
+      mobile_mac: user.mobile_mac,
       token: token,
     };
   }
