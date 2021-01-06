@@ -1,9 +1,9 @@
 import moment from 'moment';
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native';
+import React from 'react';
+import {View, ScrollView} from 'react-native';
 import {LocaleConfig, CalendarList} from 'react-native-calendars';
-import {Caption, Title, Button, IconButton} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Caption} from 'react-native-paper';
+import styles from './styles';
 
 const testIDs = require('./testIDs');
 
@@ -93,21 +93,3 @@ export default function index({navigation}) {
     </View>
   );
 }
-
-// export default ScheduleScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  calendar: {
-    flexDirection: 'column',
-  },
-  calendar_note: {
-    paddingTop: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-});

@@ -7,7 +7,6 @@ const initialState = {
   selectedItem: '',
   mac_address: '',
   isLoading: true,
-  usrEmail: '',
   usrType: '',
   token: null,
 

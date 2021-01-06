@@ -1,29 +1,18 @@
-import React, {Component, useContext} from 'react';
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  StyleSheet,
-} from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import {Text, View, TextInput, TouchableOpacity, Alert} from 'react-native';
 import styles from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Picker} from '@react-native-picker/picker';
-import {connect} from 'react-redux';
 import {
   handleInputEmail,
   handleInputPwd,
   updateSecureEntry,
   handleChangeSelect,
   check_login,
+  refreshForm,
 } from './actions';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
-import students from '../models/students';
-import employees from '../models/employees';
-import teachers from '../models/teachers';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthContext} from '../components/context';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -38,7 +27,16 @@ function login() {
     isValidPassword,
     selectedItem,
     itemType,
+    token,
   } = useSelector((state) => state.Login);
+
+  if (token == null) {
+    useEffect(() => {
+      return () => {
+        dispatch(refreshForm());
+      };
+    }, []);
+  }
 
   const handleLogin = (email, pwd, selected) => {
     let findUser;
@@ -59,18 +57,7 @@ function login() {
     }
     console.log(findUser);
     signIn(findUser);
-    // this.signIn();
-    // if (findUser.length > 0) {
-    //   Alert.alert('', 'Email và password đã đúng', [{text: 'OK'}]);
-    //   return;
-    // }
-    // console.log(findUser);
-    // const token = String(this.makeToken());
-    // console.log(findUser, token);
-
-    // console.log(this.props.token);
   };
-  // console.log(usr_email);
   return (
     <View style={styles.container}>
       <Text style={styles.sizeTitle}>Aptech Education</Text>
@@ -155,11 +142,6 @@ function login() {
           <TouchableOpacity
             style={styles.btn_signIn}
             onPress={() => {
-              // this.handleLogin(
-              //   this.props.usr_email,
-              //   this.props.usr_password,
-              //   this.props.selected,
-              // );
               handleLogin(usr_email, usr_password, selectedItem);
             }}>
             <View>

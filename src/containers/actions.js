@@ -32,8 +32,9 @@ export const logout = () => ({
   type: 'LOGOUT',
 });
 
-export const retrieve_token = (token) => ({
+export const retrieve_token = (usrType, token) => ({
   type: 'RETRIEVE_TOKEN',
+  usrType: usrType,
   token: token,
 });
 
@@ -66,6 +67,10 @@ export const check_login = (email, password, selected) => {
   }
   return null;
 };
+
+export const refreshForm = () => ({
+  type: 'REFRESH',
+});
 
 // export const signOut = () => ({
 //   type: 'LOGOUT',

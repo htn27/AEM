@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Button, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Button} from 'react-native';
 import {TextInput, Title, Caption} from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
-// import {color} from 'react-native-reanimated';
-// import {set} from 'react-native-reanimated';
+import styles from './styles';
 import Student from '../../../models/students';
 
 export default function index({navigation}) {
@@ -396,61 +395,3 @@ export default function index({navigation}) {
     // </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    // justifyContent: 'flex-start',
-  },
-  header: {
-    // flexDirection: 'column',
-    // justifyContent: '',
-    marginTop: 20,
-  },
-  footer: {
-    // flex: 1,
-    // alignContent: 'flex-end',
-    // alignItems: 'flex-end',
-    // flexDirection: 'row-reverse',
-    // justifyContent: 'flex-end',
-    marginTop: 20,
-  },
-  changePwdContent: {
-    width: 40,
-  },
-  title: {
-    fontSize: 16,
-    marginTop: 3,
-    fontWeight: 'bold',
-  },
-  unValid: {
-    color: 'gray',
-  },
-  Valid: {
-    color: 'green',
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  icon_grid: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 6,
-  },
-  iconStyle: {
-    flex: 3,
-    width: '100%',
-
-    // backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  chks_valid: {
-    marginTop: 20,
-  },
-});
