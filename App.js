@@ -19,21 +19,21 @@ const App = () => {
   const authContext = useMemo(
     () => ({
       signIn: async (findUser) => {
-        const {email, type, token} = findUser;
+        const {id_user, id_role, token} = findUser;
         try {
-          await AsyncStorage.setItem('userToken', token);
-          await AsyncStorage.setItem('userEmail', email);
-          await AsyncStorage.setItem('userType', type);
+          await AsyncStorage.setItem('Token', token);
+          await AsyncStorage.setItem('idUser', id_user);
+          await AsyncStorage.setItem('idRole', id_role);
         } catch (e) {
           console.log(e);
         }
-        dispatch(login(type, token));
+        dispatch(login(id_role, token));
       },
       signOut: async () => {
         try {
-          await AsyncStorage.removeItem('userToken');
-          await AsyncStorage.removeItem('userEmail');
-          await AsyncStorage.removeItem('userType');
+          await AsyncStorage.removeItem('Token');
+          await AsyncStorage.removeItem('idUser');
+          await AsyncStorage.removeItem('idRole');
         } catch (e) {
           console.log(e);
         }
@@ -48,8 +48,8 @@ const App = () => {
       let token;
       let type;
       try {
-        token = await AsyncStorage.getItem('userToken');
-        token = await AsyncStorage.getItem('userType');
+        token = await AsyncStorage.getItem('Token');
+        token = await AsyncStorage.getItem('idRole');
       } catch (e) {
         console.log(e);
       }

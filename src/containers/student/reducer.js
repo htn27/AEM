@@ -4,8 +4,7 @@ const reducer = (state = initialState, action) => {
     case 'GET_USER':
       return {
         ...state,
-        usrEmail: action.usrEmail,
-        usrType: action.usrType,
+        id_user: action.idUser,
       };
     default:
       return state;

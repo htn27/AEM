@@ -38,7 +38,7 @@ function login() {
     }, []);
   }
 
-  const handleLogin = (email, pwd, selected) => {
+  const handleLogin = async (email, pwd, selected) => {
     let findUser;
     if (email == '' || pwd == '') {
       Alert.alert('', 'Vui lòng nhập email va password', [{text: 'OK'}]);
@@ -49,13 +49,13 @@ function login() {
       return;
     }
     if (email != '' && pwd != '' && selected != '') {
-      findUser = check_login(email, pwd, selected);
+      findUser = await check_login(email, pwd, selected);
     }
     if (findUser == null) {
       Alert.alert('', 'Email và password không được tìm thấy', [{text: 'OK'}]);
       return;
     }
-    console.log(findUser);
+    // console.log(findUser);
     signIn(findUser);
   };
   return (

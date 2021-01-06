@@ -18,20 +18,18 @@ import {AuthContext} from '../../components/context';
 export default function DrawerContent(props) {
   const {signOut} = useContext(AuthContext);
   const dispatch = useDispatch();
-  const {usrEmail, usrType} = useSelector((state) => state.Student);
+  const {id_user} = useSelector((state) => state.Student);
 
   useEffect(() => {
     return async () => {
-      let usrEmail;
-      let usrType;
+      let isUser;
       try {
-        usrEmail = await AsyncStorage.getItem('userEmail');
-        usrType = await AsyncStorage.getItem('userType');
+        isUser = await AsyncStorage.getItem('idUser');
       } catch (error) {
         console.log(error);
       }
 
-      dispatch(getUsr(usrEmail, usrType));
+      dispatch(getUsr(isUser));
     };
   });
 
@@ -53,8 +51,8 @@ export default function DrawerContent(props) {
               alignItems: 'center',
             }}>
             <Title style={styles.title}>Hồ Thế Nhuận</Title>
-            <Caption style={styles.caption}>{usrEmail}</Caption>
-            <Caption style={styles.caption}>{usrType}</Caption>
+            <Caption style={styles.caption}>{id_user}</Caption>
+            <Caption style={styles.caption}>Sinh viên</Caption>
           </View>
         </View>
       </View>

@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   usr_email: '',
   usr_password: '',
   secureTxtEntry: true,
@@ -28,4 +28,3 @@ const initialState = {
     },
   ],
 };
-export default initialState;

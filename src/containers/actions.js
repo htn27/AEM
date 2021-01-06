@@ -1,6 +1,4 @@
-import students from '../models/students';
-import employees from '../models/employees';
-import teachers from '../models/teachers';
+import {getUser} from './apis';
 
 export const handleInputEmail = (value) => ({
   type: 'InputEmail',
@@ -38,33 +36,37 @@ export const retrieve_token = (usrType, token) => ({
   token: token,
 });
 
-export const check_login = (email, password, selected) => {
+export const check_login = async (email, password, selected) => {
   let user;
   const token = makeToken();
+  let type;
+
   if (selected == 'sinhvien') {
-    user = students.filter((item) => {
-      return email == item.email_student && password == item.password;
-    });
+    type = 1;
+    user = await getUser(type, email, password);
+    // console.log(user);
   }
   if (selected == 'giangvien') {
-    user = teachers.filter((item) => {
-      return email == item.email_student && password == item.password;
-    });
+    type = 2;
+    user = getUser(type, email, password);
   }
   if (selected == 'nhanvien') {
-    user = employees.filter((item) => {
-      return email == item.email_student && password == item.password;
-    });
+    type = 3;
+    user = getUser(type, email, password);
   }
-  if (user.length > 0) {
+  if (user != null) {
+    // console.log(user);
     return {
-      id: user[0].id,
-      email: user[0].email_student,
-      pwd: user[0].password,
-      type: selected,
+      id_user: user.id_user,
+      name_user: user.name_user,
+      email: user.email,
+      id_role: type,
+      image_student: user.image_student,
+      creator: user.creator,
       token: token,
     };
   }
+
   return null;
 };
 
